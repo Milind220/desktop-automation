@@ -17,13 +17,21 @@ def main():
             print('Quitting now! Hope I helped!')
             break
 
-        else:
-            total =  float(input('\nEnter amount here: '))
+        elif command.lower() != '':
+            print('Please enter a valid command!')
+            continue
 
-            for key in assets:
-                fraction = assets[key]
-                allocation = fraction * total
-                print(f'\n{fraction * 100}% of {total} in {key} = {allocation}')
+        else:
+            try:
+                total =  float(input('\nEnter amount here: '))
+
+                for key in assets:
+                    fraction = assets[key]
+                    allocation = fraction * total
+                    print(f'\n{fraction * 100}% of {total} in {key} = {allocation}')
+                    
+            except ValueError as err:
+                print(f'{err}\nPlease enter a number!')
 
 if __name__ == '__main__':
     main()
