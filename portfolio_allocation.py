@@ -31,6 +31,7 @@ def main():
                 else:
                     total = float(total)
 
+                print(f'Total value = {total}')
                 for key in assets:
                     fraction = assets[key]
                     allocation = fraction * total
