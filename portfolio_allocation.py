@@ -22,8 +22,14 @@ def main():
             continue
 
         else:
+            total = input('\nEnter amount here: ')
             try:
-                total =  float(input('\nEnter amount here: '))
+                if '+' in total:
+                    nums = total.split('+')
+                    total = sum(map(float, nums))
+                
+                else:
+                    total = float(total)
 
                 for key in assets:
                     fraction = assets[key]
