@@ -44,7 +44,7 @@ def main():
                 for key in percentage_weights:
                     fraction = percentage_weights[key]
                     allocation = fraction * total
-                    print(f'\n{fraction * 100}% of {total} in {key} = {allocation}')
+                    print(f'\n{round((fraction * 100),2)}% of {total} in {key} = {allocation}')
                     
             except ValueError as err:
                 print(f'{err}\nPlease enter a number!')
