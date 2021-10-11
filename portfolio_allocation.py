@@ -3,9 +3,14 @@
 
 from typing import Dict
 
+# TODO: edit print statement so people know that they can use + symbol
+# When entering money amount.
+
+# TODO: Create a .txt file with the weights, so that one can edit the
+# weights without knowing how to code.
 
 def main():
-    """Generates the ratios for the allocation of money"""
+    """Prints the ratios for the allocation of money"""
     
     weight_ratios = {
         'OFSS' : 1.0,
@@ -48,6 +53,14 @@ def main():
 
 
 def get_percentage_weights(weight_ratios: Dict[str, float]) -> Dict[str, float]:
+    """Returns the fractional weightages of instruments
+
+    Args:
+        weight_ratios (Dict[str, float]): Weightage ratios that you set
+
+    Returns:
+        Dict[str, float]: Final fractional weightages
+    """
     percentage_weight_dict = {}
     total = sum(weight_ratios.values())
     unit_fraction = 1/total
@@ -63,6 +76,12 @@ def get_percentage_weights(weight_ratios: Dict[str, float]) -> Dict[str, float]:
 def print_allocations(
                     weights: Dict[str, float],
                     total: float) -> None: 
+    """Prints the final division of funds
+
+    Args:
+        weights (Dict[str, float]): fractional weightages of instruments
+        total (float): total money to be invested
+    """
 
     for key in weights:
         fraction = weights[key]
