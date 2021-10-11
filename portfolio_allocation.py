@@ -41,10 +41,7 @@ def main():
                     total = float(total)
 
                 print(f'Total value = {total}')
-                for key in percentage_weights:
-                    fraction = percentage_weights[key]
-                    allocation = fraction * total
-                    print(f'\n{round((fraction * 100),2)}% of {total} in {key} = {allocation}')
+                print_allocations(percentage_weights, total)
                     
             except ValueError as err:
                 print(f'{err}\nPlease enter a number!')
@@ -59,8 +56,19 @@ def get_percentage_weights(weight_ratios: Dict[str, float]) -> Dict[str, float]:
         weight = weight_ratios[key]
         weight_fraction = unit_fraction * weight
         percentage_weight_dict.update({key: weight_fraction}) 
-    
+
     return percentage_weight_dict
+
+
+def print_allocations(
+                    weights: Dict[str, float],
+                    total: float) -> None: 
+
+    for key in weights:
+        fraction = weights[key]
+        allocation = fraction * total
+
+        print(f'\n{round((fraction * 100), 2)}% of {total} in {key} = {allocation}')
 
 
 if __name__ == '__main__':
