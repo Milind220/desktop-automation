@@ -1,4 +1,4 @@
-# desktop-automation
+# Desktop Automation
 
 This is a collection of the programs that I've written to automatate certain tasks that I generally deal with on quite often. The code for these is currently all in Python. Check out the project folders for more!
 
