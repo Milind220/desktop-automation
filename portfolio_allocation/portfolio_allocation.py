@@ -36,6 +36,10 @@ def main():
             continue
 
         else:
+            print(
+                '\nEnter money here.\n'
+                'Note: If you want to check if your overall portfolio needs rebalancing, enter as\n'
+                'current value + funds being added OR as total account value')
             total = input('\nEnter amount here: ')
             try:
                 if '+' in total:
