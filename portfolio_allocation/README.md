@@ -1,4 +1,5 @@
 # Portfolio Allocation Helper
+*Version 1.0*
 
 Calculating the allocation of funds into different investment instruments is a fairly annoying process. This script takes in a numerical value for the funds that you wish to invest or add to a portfolio, and spits out the percentage division of money between the different stocks/ETFs.
 
