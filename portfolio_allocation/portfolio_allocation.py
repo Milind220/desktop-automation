@@ -21,7 +21,7 @@ def main():
 
     while True:     # Ensures that only valid input is given to source
         source = input('a for rtf file, b for excel file\nEnter here: ')
-        
+
         if source.lower() in ('a', 'b'):
             break
 
@@ -29,7 +29,10 @@ def main():
             print('Please enter a valid input!')
             continue
     
-    weight_ratios: Dict[str, float] = get_ratio_data(source)
+    if source == 'a':
+        weight_ratios: Dict[str, float] = get_rtf_ratios()
+    else:
+        weight_ratios: Dict[str, float] = get_excel_ratios()
 
     # To ensure that weights are in percentages, if not already.
     percentage_weights: Dict[str, float] = get_percentage_weights(weight_ratios)     
@@ -104,26 +107,23 @@ def print_allocations(
 
 
 def get_rtf_ratios() -> Dict[str, float]:
+    """Get the ratios from the rtf file in directory
+
+    Returns:
+        Dict[str, float]: Dictionary of stocks and ratios
+    """
     return {'sample': 1.0}
 
 
 def get_excel_ratios() -> Dict[str, float]:
+    """Get the ratios from the excel file in the directory
+
+    Returns:
+        Dict[str, float]: Dictionary of stocks and ratios
+    """
     return {'sample': 1.0}
 
-
-def get_ratio_data(source: str) -> Dict[str, float]:
-
-    if source == 'a':
-        data = get_rtf_ratios()
-
-    else: 
-        data = get_excel_ratios()
-    
-    return data
         
-
-
-
 if __name__ == '__main__':
     main()
 
