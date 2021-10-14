@@ -1,6 +1,6 @@
 """Calculates the allocation of money for investment portfolio"""
 
-
+import functions
 from typing import Dict
 
 
@@ -30,12 +30,12 @@ def main():
             continue
     
     if source == 'a':
-        weight_ratios: Dict[str, float] = get_rtf_ratios()
+        weight_ratios: Dict[str, float] = functions.get_rtf_ratios()
     else:
-        weight_ratios: Dict[str, float] = get_excel_ratios()
+        weight_ratios: Dict[str, float] = functions.get_excel_ratios()
 
     # To ensure that weights are in percentages, if not already.
-    percentage_weights: Dict[str, float] = get_percentage_weights(weight_ratios)     
+    percentage_weights: Dict[str, float] = functions.get_percentage_weights(weight_ratios)     
 
     while True:
         command : str = str(input('\nEnter command (q to quit, enter to calculate) :'))
@@ -63,65 +63,11 @@ def main():
                     total = float(total)
 
                 print(f'Total value = {total}')
-                print_allocations(percentage_weights, total)
+                functions.print_allocations(percentage_weights, total)
                     
             except ValueError as err:
                 print(f'{err}\nPlease enter a number!')
 
-
-def get_percentage_weights(weight_ratios: Dict[str, float]) -> Dict[str, float]:
-    """Returns the fractional weightages of instruments
-
-    Args:
-        weight_ratios (Dict[str, float]): Weightage ratios that you set
-
-    Returns:
-        Dict[str, float]: Final fractional weightages
-    """
-    percentage_weight_dict = {}
-    total = sum(weight_ratios.values())
-    unit_fraction = 1/total
-
-    for key in weight_ratios:
-        weight = weight_ratios[key]
-        weight_fraction = unit_fraction * weight
-        percentage_weight_dict.update({key: weight_fraction}) 
-
-    return percentage_weight_dict
-
-
-def print_allocations(
-                    weights: Dict[str, float],
-                    total: float) -> None: 
-    """Prints the final division of funds
-
-    Args:
-        weights (Dict[str, float]): fractional weightages of instruments
-        total (float): total money to be invested
-    """
-    for key in weights:
-        fraction = weights[key]
-        allocation = fraction * total
-
-        print(f'\n{round((fraction * 100), 2)}% of {total} in {key} = {allocation}')
-
-
-def get_rtf_ratios() -> Dict[str, float]:
-    """Get the ratios from the rtf file in directory
-
-    Returns:
-        Dict[str, float]: Dictionary of stocks and ratios
-    """
-    return {'sample': 1.0}
-
-
-def get_excel_ratios() -> Dict[str, float]:
-    """Get the ratios from the excel file in the directory
-
-    Returns:
-        Dict[str, float]: Dictionary of stocks and ratios
-    """
-    return {'sample': 1.0}
 
         
 if __name__ == '__main__':
