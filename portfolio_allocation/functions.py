@@ -1,5 +1,7 @@
 
+
 from typing import Dict
+
 
 def get_percentage_weights(weight_ratios: Dict[str, float]) -> Dict[str, float]:
     """Returns the fractional weightages of instruments
@@ -54,3 +56,7 @@ def get_excel_ratios() -> Dict[str, float]:
         Dict[str, float]: Dictionary of stocks and ratios
     """
     return {'sample': 1.0}
+
+
+if __name__ == '__main__':
+    pass
