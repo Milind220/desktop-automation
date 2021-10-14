@@ -3,15 +3,10 @@
 
 from typing import Dict
 
-# TODO: edit print statement so people know that they can use + symbol
-# When entering money amount.
-
-# TODO: Create a .txt file with the weights, so that one can edit the
-# weights without knowing how to code.
 
 def main():
     """Prints the ratios for the allocation of money"""
-    
+    # TODO: Delete this once you got the file reading done
     weight_ratios = {
         'OFSS' : 1.0,
         'ITC' : 1.0,
@@ -22,7 +17,22 @@ def main():
         'NIFTYBEES' : 14.0
     }
 
-    percentage_weights: Dict[str, float] = get_percentage_weights(weight_ratios)
+    print('Where would you like to read stock weight ratios from?\n')
+
+    while True:     # Ensures that only valid input is given to source
+        source = input('a for rtf file, b for excel file\nEnter here: ')
+        
+        if source.lower() in ('a', 'b'):
+            break
+
+        else:
+            print('Please enter a valid input!')
+            continue
+    
+    weight_ratios: Dict[str, float] = get_ratio_data(source)
+
+    # To ensure that weights are in percentages, if not already.
+    percentage_weights: Dict[str, float] = get_percentage_weights(weight_ratios)     
 
     while True:
         command : str = str(input('\nEnter command (q to quit, enter to calculate) :'))
@@ -86,12 +96,32 @@ def print_allocations(
         weights (Dict[str, float]): fractional weightages of instruments
         total (float): total money to be invested
     """
-
     for key in weights:
         fraction = weights[key]
         allocation = fraction * total
 
         print(f'\n{round((fraction * 100), 2)}% of {total} in {key} = {allocation}')
+
+
+def get_rtf_ratios() -> Dict[str, float]:
+    return {'sample': 1.0}
+
+
+def get_excel_ratios() -> Dict[str, float]:
+    return {'sample': 1.0}
+
+
+def get_ratio_data(source: str) -> Dict[str, float]:
+
+    if source == 'a':
+        data = get_rtf_ratios()
+
+    else: 
+        data = get_excel_ratios()
+    
+    return data
+        
+
 
 
 if __name__ == '__main__':
