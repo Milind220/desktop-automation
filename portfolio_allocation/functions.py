@@ -51,10 +51,11 @@ def get_rtf_ratios() -> Dict[str, float]:
     f = open(file, 'r')
     lines = f.readlines()
     for line in lines:
-        if line[0].isalpha():
+        if line[0].isalpha():   # RTF files have a lot of random setting lines in the beginning.
             line = line[:-2]
             list1: List[str] = line.split(',')
-            list1[1] = float(list1[1].strip())
+            list1[1] = list1[1].strip()
+            list1[1] = float(list1[1])
             
             result_dict.update({list1[0]: list1[1]})
 
