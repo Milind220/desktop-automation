@@ -1,6 +1,6 @@
 
 
-from typing import Dict
+from typing import Dict, List
 
 
 def get_percentage_weights(weight_ratios: Dict[str, float]) -> Dict[str, float]:
@@ -46,7 +46,19 @@ def get_rtf_ratios() -> Dict[str, float]:
     Returns:
         Dict[str, float]: Dictionary of stocks and ratios
     """
-    return {'sample': 1.0}
+    file = 'portfolio_allocation/ratios.rtf'
+    result_dict = {}
+    f = open(file, 'r')
+    lines = f.readlines()
+    for line in lines:
+        if line[0].isalpha():
+            line = line[:-2]
+            list1: List[str] = line.split(',')
+            list1[1] = float(list1[1].strip())
+            
+            result_dict.update({list1[0]: list1[1]})
+
+    return result_dict
 
 
 def get_excel_ratios() -> Dict[str, float]:
@@ -55,6 +67,7 @@ def get_excel_ratios() -> Dict[str, float]:
     Returns:
         Dict[str, float]: Dictionary of stocks and ratios
     """
+    
     return {'sample': 1.0}
 
 

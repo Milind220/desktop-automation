@@ -1,5 +1,6 @@
 """Calculates the allocation of money for investment portfolio"""
 
+
 import functions
 from typing import Dict
 
