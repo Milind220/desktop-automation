@@ -7,16 +7,6 @@ from typing import Dict
 
 def main():
     """Prints the ratios for the allocation of money"""
-    # TODO: Delete this once you got the file reading done
-    weight_ratios = {
-        'OFSS' : 1.0,
-        'ITC' : 1.0,
-        'EBBETF0430' : 7.0,
-        'NETFMID150' : 12.4,
-        'GOLDBEES' : 14.0,
-        'JUNIORBEES' : 14.0,
-        'NIFTYBEES' : 14.0
-    }
 
     print('Where would you like to read stock weight ratios from?\n')
 

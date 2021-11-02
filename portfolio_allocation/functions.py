@@ -46,7 +46,7 @@ def get_rtf_ratios() -> Dict[str, float]:
     Returns:
         Dict[str, float]: Dictionary of stocks and ratios
     """
-    file = 'portfolio_allocation/ratios.rtf'
+    file = 'ratios.rtf'
     result_dict = {}
     f = open(file, 'r')
     lines = f.readlines()
