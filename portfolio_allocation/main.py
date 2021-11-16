@@ -4,6 +4,7 @@
 import functions
 from typing import Dict
 
+# TODO: Fix incorrect ratio processing.
 
 def main():
     """Prints the ratios for the allocation of money"""
