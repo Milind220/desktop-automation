@@ -52,8 +52,15 @@ def get_rtf_ratios() -> Dict[str, float]:
     lines = f.readlines()
     for line in lines:
         if line[0].isalpha():   # RTF files have a lot of random setting lines in the beginning.
-            instrument: str = ''.join([x for x in line if x.isalpha()])
-            ratio: float = float(''.join([x for x in line if x.isdigit()]))
+            line_list: List[str] = line.split(',')
+            
+            instrument: str = line_list[0]
+            for i, x in enumerate(line_list[1][::-1]): # Iterate backwards.
+                if x.isdigit():
+                     break
+                n = -i - 1 # find the index from the end where the float begins.
+            ratio: float = float(line_list[1][:n])
+
             result_dict.update({instrument: ratio})      
     return result_dict
 
@@ -69,4 +76,4 @@ def get_excel_ratios() -> Dict[str, float]:
 
 
 if __name__ == '__main__':
-    pass
+    print(get_rtf_ratios())

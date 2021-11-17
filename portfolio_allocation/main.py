@@ -27,7 +27,7 @@ def main():
         weight_ratios: Dict[str, float] = functions.get_excel_ratios()
 
     # To ensure that weights are in percentages, if not already.
-    percentage_weights: Dict[str, float] = functions.get_percentage_weights(weight_ratios)     
+    percentage_weights: Dict[str, float] = functions.get_percentage_weights(weight_ratios) 
 
     while True:
         command : str = str(input('\nEnter command (q to quit, enter to calculate) :'))
