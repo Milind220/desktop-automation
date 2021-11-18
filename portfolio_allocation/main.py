@@ -60,7 +60,6 @@ def main():
             except ValueError as err:
                 print(f'{err}\nPlease enter a number!')
 
-
         
 if __name__ == '__main__':
     main()

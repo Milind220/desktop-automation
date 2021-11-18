@@ -6,7 +6,7 @@ import openpyxl
 
 
 def get_percentage_weights(weight_ratios: Dict[str, float]) -> Dict[str, float]:
-    """Returns the fractional weightages of instruments
+    """Returns the fractional weightages of instruments.
 
     Args:
         weight_ratios (Dict[str, float]): Weightage ratios that you set
@@ -29,7 +29,7 @@ def get_percentage_weights(weight_ratios: Dict[str, float]) -> Dict[str, float]:
 def print_allocations(
                     weights: Dict[str, float],
                     total: float) -> None: 
-    """Prints the final division of funds
+    """Prints the final division of funds.
 
     Args:
         weights (Dict[str, float]): fractional weightages of instruments
@@ -43,7 +43,7 @@ def print_allocations(
 
 
 def get_rtf_ratios() -> Dict[str, float]:
-    """Get the ratios from the rtf file in directory
+    """Gets the ratios from the rtf file in directory.
 
     Returns:
         Dict[str, float]: Dictionary of stocks and ratios
@@ -73,7 +73,7 @@ def get_rtf_ratios() -> Dict[str, float]:
          
 
 def get_excel_ratios() -> Dict[str, float]:
-    """Get the ratios from the excel file in the directory
+    """Gets the ratios from the excel file in the directory.
 
     Returns:
         Dict[str, float]: Dictionary of stocks and ratios
