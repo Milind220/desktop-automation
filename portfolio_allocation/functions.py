@@ -2,6 +2,8 @@
 
 from typing import Dict, List
 
+import openpyxl
+
 
 def get_percentage_weights(weight_ratios: Dict[str, float]) -> Dict[str, float]:
     """Returns the fractional weightages of instruments
@@ -46,24 +48,29 @@ def get_rtf_ratios() -> Dict[str, float]:
     Returns:
         Dict[str, float]: Dictionary of stocks and ratios
     """
-    file = 'ratios.rtf'
     result_dict = {}
-    f = open(file, 'r')
-    lines = f.readlines()
-    for line in lines:
-        if line[0].isalpha():   # RTF files have a lot of random setting lines in the beginning.
-            line_list: List[str] = line.split(',')
-            
-            instrument: str = line_list[0]
-            for i, x in enumerate(line_list[1][::-1]): # Iterate backwards.
-                if x.isdigit():
-                     break
-                n = -i - 1 # find the index from the end where the float begins.
-            ratio: float = float(line_list[1][:n])
+    try:
+        with open('ratios.rtf', 'r') as f:
+            lines = f.readlines()
 
-            result_dict.update({instrument: ratio})      
-    return result_dict
+        for line in lines:
+            if line[0].isalpha():   # RTF files have a lot of random setting lines in the beginning.
 
+                line_list: List[str] = line.split(',')
+                instrument: str = line_list[0]
+                for i, x in enumerate(line_list[1][::-1]): # Iterate backwards.
+                    if x.isdigit():
+                        break
+                    n = -i - 1 # find the index from the end where the float begins.
+                ratio: float = float(line_list[1][:n])
+
+                result_dict.update({instrument: ratio}) 
+        return result_dict
+
+    except Exception:
+        print('Sorry, RTF file could not be read! Try the Excel file...')
+        return {'sample': 1.0}
+         
 
 def get_excel_ratios() -> Dict[str, float]:
     """Get the ratios from the excel file in the directory
@@ -71,9 +78,17 @@ def get_excel_ratios() -> Dict[str, float]:
     Returns:
         Dict[str, float]: Dictionary of stocks and ratios
     """
+    result_dict = {}
+    try:
+        wb = openpyxl.load_workbook(filename='ratios.xlsx', read_only=True)
+        ws = wb.active
+        for row in ws.rows:
+            result_dict.update({str(row[0].value): float(row[1].value)})
+                
+    except Exception:
+        print('Sorry, Excel file could not be read! Try the .rtf file...')
+        return {'sample': 1.0}
+
     
-    return {'sample': 1.0}
-
-
 if __name__ == '__main__':
-    print(get_rtf_ratios())
+    pass
