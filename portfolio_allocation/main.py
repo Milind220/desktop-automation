@@ -1,10 +1,10 @@
 """Calculates the allocation of money for investment portfolio"""
 
 
-import functions
 from typing import Dict
 
-# TODO: Fix incorrect ratio processing.
+import functions
+
 
 def main():
     """Prints the ratios for the allocation of money"""
@@ -25,7 +25,7 @@ def main():
         weight_ratios: Dict[str, float] = functions.get_rtf_ratios()
     else:
         weight_ratios: Dict[str, float] = functions.get_excel_ratios()
-
+    
     # To ensure that weights are in percentages, if not already.
     percentage_weights: Dict[str, float] = functions.get_percentage_weights(weight_ratios) 
 

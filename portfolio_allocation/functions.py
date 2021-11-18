@@ -50,7 +50,7 @@ def get_rtf_ratios() -> Dict[str, float]:
     """
     result_dict = {}
     try:
-        with open('ratios.rtf', 'r') as f:
+        with open('portfolio_allocation/ratios.rtf', 'r') as f:
             lines = f.readlines()
 
         for line in lines:
@@ -80,10 +80,11 @@ def get_excel_ratios() -> Dict[str, float]:
     """
     result_dict = {}
     try:
-        wb = openpyxl.load_workbook(filename='ratios.xlsx', read_only=True)
+        wb = openpyxl.load_workbook(filename='portfolio_allocation/ratios.xlsx', read_only=True)
         ws = wb.active
         for row in ws.rows:
             result_dict.update({str(row[0].value): float(row[1].value)})
+        return result_dict
                 
     except Exception:
         print('Sorry, Excel file could not be read! Try the .rtf file...')
