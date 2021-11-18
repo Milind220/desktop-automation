@@ -5,10 +5,11 @@ Calculating the allocation of funds into different investment instruments is a f
 
 ### Usage guide
 
-The ratio's in which you wish to distribute your money have to be set in the ratios.rtf file. This ratio can be percentages, or even a relative ratio (example 1:2:1).
-I picked .rtf files for this purpose as they can be easily opened by most computers. I am also going to add Excel file reading capabilities soon.
+The ratio's in which you wish to distribute your money have to be set in the ratios.rtf or the ratios.xlsx file. This ratio can be percentages, or even a relative ratio (example 1:2:1).
+I picked .rtf files (text files) and Excel files for this purpose as they can be easily opened by most computers.
  
 The funds to calculate can be entered either as a number or even a sum of two numbers. The sum of two numbers is useful as very often you need to add money, as well as check if your portfolio is still balanced. 
+
 In this case, enter the number in the format: 
 
 *current value + value to be added*
