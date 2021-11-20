@@ -103,7 +103,7 @@ def _generate_allocation_figure(weights: Dict[str, float], total: float):
         labels.append(f'{ticker}: {fraction*100}% = {allocation}')
 
     plt.bar(range(len(weights)), values, tick_label = labels)
-    plt.tick_params(axis='x', labelsize = 8, rotation=30)
+    plt.tick_params(axis='x', labelsize = 6, rotation=20)
     plt.show()
 
 
