@@ -15,3 +15,5 @@ In this case, enter the number in the format:
 *current value + value to be added*
 
 This will show how the new total value of your portfolio ***should*** be allocated. You can use this information to re-balance your portfolio if needed.
+
+The output can be displayed either in a bar graph, in the command line, or both! You choose how you want it :)
