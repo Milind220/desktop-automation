@@ -16,7 +16,6 @@ def main():
 
         if source.lower() in ('a', 'b'):
             break
-
         else:
             print('Please enter a valid input!')
             continue
@@ -63,7 +62,3 @@ def main():
         
 if __name__ == '__main__':
     main()
-
-    
-              
-    
