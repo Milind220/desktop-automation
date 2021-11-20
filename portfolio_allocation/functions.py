@@ -27,7 +27,7 @@ def get_percentage_weights(weight_ratios: Dict[str, float]) -> Dict[str, float]:
     return percentage_weight_dict
 
 
-def print_allocations(
+def _print_allocations(
                     weights: Dict[str, float],
                     total: float) -> None: 
     """Prints the final division of funds.
@@ -94,7 +94,7 @@ def get_excel_ratios() -> Dict[str, float]:
         return {'sample': 1.0}
 
 
-def generate_allocation_figure(weights: Dict[str, float], total: float):
+def _generate_allocation_figure(weights: Dict[str, float], total: float):
     values: List[float] = list(weights.values())
     labels: List[str] = []
     for ticker in weights:
