@@ -41,24 +41,27 @@ def main():
 
         else:
             print(
-                '\nEnter money here.\n'
+                '\nEnter funds here.\n'
                 'Note: If you want to check if your overall portfolio needs rebalancing, enter as\n'
                 'current value + funds being added OR as total account value')
-            total = input('\nEnter amount here: ')
-            try:
-                if '+' in total:
-                    nums = total.split('+')
-                    total = sum(map(float, nums))
+            while True:
+                try:
+                    total = input('\nEnter amount here: ')
+                    if '+' in total:
+                        nums = total.split('+')
+                        total = sum(map(float, nums))
+                    else:
+                        total = float(total)
+                    break
+
+                except ValueError as err:
+                    print(f'{err}\nPlease enter a number!')
+                    continue
+
+            print(f'Total value = {total}')
                 
-                else:
-                    total = float(total)
-
-                print(f'Total value = {total}')
-                functions.print_allocations(percentage_weights, total)
+            functions.show_output(percentage_weights, total)
                     
-            except ValueError as err:
-                print(f'{err}\nPlease enter a number!')
-
-        
+            
 if __name__ == '__main__':
     main()
