@@ -106,5 +106,17 @@ def _generate_allocation_figure(weights: Dict[str, float], total: float):
     plt.show()
 
 
+def show_output(weights: Dict[str, float], total: float):
+    print('See allocations in command line or graphical output')
+    choice = input('Enter 1 for command line, 2 for graphical output, anything else for both : ')
+    if choice == '1':
+        _print_allocations(weights, total)
+    elif choice == '2':
+        _generate_allocation_figure(weights, total)
+    else:
+        _print_allocations(weights, total)
+        _generate_allocation_figure(weights, total)
+
+
 if __name__ == '__main__':
-    pass
+    show_output({'bar': 0.4, 'foo': 0.6}, 120)
