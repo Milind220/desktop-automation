@@ -116,6 +116,25 @@ def get_excel_ratios() -> Dict[str, float]:
         return {'sample': 1.0}
 
 
+def get_input_total():
+    while True:
+        try:
+            total = input('\nEnter amount here: ')
+            if '+' in total:
+                nums = total.split('+')
+                total = sum(map(float, nums))
+            else:
+                total = float(total)
+                break
+
+        except ValueError:
+            print('Sorry\nPlease enter a number!')
+            _log_error('get_input_total')
+            continue
+
+    return total 
+
+
 def _generate_allocation_figure(weights: Dict[str, float], total: float):
     values: List[float] = list(weights.values())
     labels: List[str] = []

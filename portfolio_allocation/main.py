@@ -45,22 +45,9 @@ def main():
                 '\nEnter funds here.\n'
                 'Note: If you want to check if your overall portfolio needs rebalancing, enter as\n'
                 'current value + funds being added OR as total account value')
-            while True:
-                try:
-                    total = input('\nEnter amount here: ')
-                    if '+' in total:
-                        nums = total.split('+')
-                        total = sum(map(float, nums))
-                    else:
-                        total = float(total)
-                    break
-
-                except ValueError as err:
-                    print(f'{err}\nPlease enter a number!')
-                    continue
-
+            total: float = functions.get_input_total()
             print(f'Total value = {total}')
-                
+            
             functions.show_output(percentage_weights, total)
                     
             
