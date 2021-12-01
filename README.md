@@ -1,6 +1,6 @@
 # Desktop Automation
 
-This is a collection of the programs that I've written to automatate certain tasks that I generally deal with on quite often. The code for these is currently all in Python. Check out the project folders for more!
+This is a collection of programs that I've written to automatate repetitive, boring tasks that I have to do quite regularly. Check out the project folders for more!
 
 Inside each folder in this repository is one such 'project'. Each folder contains all the files needed to use the automation script, along with a it's own little README file to tell you more about it.
 
