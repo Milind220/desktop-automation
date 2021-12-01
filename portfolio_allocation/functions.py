@@ -1,9 +1,29 @@
+"""Functions to be used in main.py for this script"""
 
 
+import logging
+import sys
 from typing import Dict, List
 
 import matplotlib.pyplot as plt
 import openpyxl
+
+
+def configure_logs(logfile_name: str = 'portfolio_allocation_errors.log') -> None:
+    """Configures settings for the script log.
+
+    Args:
+        logfile_name (str, optional): Name of the log file. Defaults to
+            'portfolio_allocation_errors.log'.  
+    """
+    logging.basicConfig(
+        filename = logfile_name,
+        filemode = 'w',
+        level = logging.ERROR,
+        format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+    print('\n\nStatus: Logs configured.'
+         f'\n\tLogs for this run can be found in {logfile_name}')
 
 
 def get_percentage_weights(weight_ratios: Dict[str, float]) -> Dict[str, float]:
@@ -51,7 +71,7 @@ def get_rtf_ratios() -> Dict[str, float]:
     """
     result_dict = {}
     try:
-        with open('portfolio_allocation/ratios.rtf', 'r') as f:
+        with open('ratios.rtf', 'r') as f:
             lines = f.readlines()
 
         for line in lines:
@@ -70,6 +90,7 @@ def get_rtf_ratios() -> Dict[str, float]:
 
     except Exception:
         print('Sorry, RTF file could not be read! Try the Excel file...')
+        _log_error(section = 'RTF file')
         return {'sample': 1.0}
          
 
@@ -82,7 +103,7 @@ def get_excel_ratios() -> Dict[str, float]:
     result_dict = {}
     try:
         wb = openpyxl.load_workbook(
-            filename = 'portfolio_allocation/ratios.xlsx',
+            filename = 'ratios.xlsx',
             read_only = True)
         ws = wb.active
         for row in ws.rows:
@@ -91,6 +112,7 @@ def get_excel_ratios() -> Dict[str, float]:
                 
     except Exception:
         print('Sorry, Excel file could not be read! Try the .rtf file...')
+        _log_error(section = 'Excel file')
         return {'sample': 1.0}
 
 
@@ -107,6 +129,11 @@ def _generate_allocation_figure(weights: Dict[str, float], total: float):
     plt.show()
 
 
+def _log_error(section: str) -> None:
+    logging.error(f'Scraping error: {section}\n'
+                  f'\tError: {sys.exc_info()[0]}\n')
+
+
 def show_output(weights: Dict[str, float], total: float):
     print('See allocations in command line or graphical output')
     choice = input('Enter 1 for command line, 2 for graphical output, anything else for both : ')
@@ -121,4 +148,3 @@ def show_output(weights: Dict[str, float], total: float):
 
 if __name__ == '__main__':
     pass
-    
