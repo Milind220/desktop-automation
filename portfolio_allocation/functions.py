@@ -123,9 +123,9 @@ def get_input_total():
             if '+' in total:
                 nums = total.split('+')
                 total = sum(map(float, nums))
-            else:
-                total = float(total)
-                break
+                
+            total = float(total)
+            break
 
         except ValueError:
             print('Sorry\nPlease enter a number!')
