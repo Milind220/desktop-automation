@@ -8,6 +8,8 @@ from typing import Dict, List
 import matplotlib.pyplot as plt
 import openpyxl
 
+# TODO: format private and public functions in correct order.
+# TODO: Add print statement reminder to tell user to close the plot.
 
 def configure_logs(logfile_name: str = 'portfolio_allocation_errors.log') -> None:
     """Configures settings for the script log.
