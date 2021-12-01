@@ -9,7 +9,8 @@ import functions
 def main():
     """Prints the ratios for the allocation of money"""
 
-    print('Where would you like to read stock weight ratios from?\n')
+    functions.configure_logs()
+    print('\nWhere would you like to read stock weight ratios from?\n')
 
     while True:     # Ensures that only valid input is given to source
         source = input('a for rtf file, b for excel file\nEnter here: ')
