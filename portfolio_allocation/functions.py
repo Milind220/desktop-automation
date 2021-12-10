@@ -132,7 +132,7 @@ def get_input_total():
 
         except ValueError:
             print("Sorry\nPlease enter a number!")
-            _log_error("get_input_total")
+            _log_error(section="get_input_total")
             continue
 
     return total
